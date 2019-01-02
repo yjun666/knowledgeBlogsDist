@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>KnowledgeBlogs</title>
+  <base href="">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="stylesheet" href="./assets/viewinfor//font-awesome-4.7.0/css/font-awesome.min.css">
+  <script src="./assets/js/jquery-3.3.1.min.js"></script>
+  <script>
+    var html = document.getElementsByTagName('html')[0];
+    if (html) {
+      var h = window.innerHeight;
+      var fontSize = (h > 1080 ? 1080 : h) / 1080 * 20;
+      html.style.fontSize = fontSize + 'px';
+      /*已经适配来当前的设备*/
+    }
+    /*响应*/
+    window.onload = function () {
+      window.onresize = function () {
+        var h = window.innerHeight;
+        var fontSize = (h > 1080 ? 1080 : h) / 1080 * 20;
+        html.style.fontSize = fontSize + 'px';
+      }
+    }
+
+  </script>
+
+  <style>
+    pre {
+      background-color: #aaa;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 10px;
+
+      position: relative;
+      border: none;
+      overflow: auto;
+      line-height: 1.3;
+    }
+
+    code {
+      color: #000;
+    }
+
+  </style>
+</head>
+
+<body>
+  <app-root></app-root>
+<script type="text/javascript" src="runtime.js"></script><script type="text/javascript" src="polyfills.js"></script><script type="text/javascript" src="styles.js"></script><script type="text/javascript" src="vendor.js"></script><script type="text/javascript" src="main.js"></script></body>
+
+</html>
