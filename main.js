@@ -193,7 +193,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _view_home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./view/home */ "./src/app/view/home/index.ts");
 /* harmony import */ var _components_sidebar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/sidebar */ "./src/app/components/sidebar/index.ts");
 /* harmony import */ var _components_contentDetails__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/contentDetails */ "./src/app/components/contentDetails/index.ts");
-/* harmony import */ var _directives_marked_directive__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./directives/marked.directive */ "./src/app/directives/marked.directive.ts");
+/* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./directives */ "./src/app/directives/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -214,7 +214,7 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 // directives
 
 var components = [_view_home__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"], _components_sidebar__WEBPACK_IMPORTED_MODULE_7__["SideBarComponent"], _components_contentDetails__WEBPACK_IMPORTED_MODULE_8__["ContentDetailsComponent"]];
-var directives = [_directives_marked_directive__WEBPACK_IMPORTED_MODULE_9__["AppMarkedDirective"]];
+var directives = [_directives__WEBPACK_IMPORTED_MODULE_9__["AppMarkedDirective"], _directives__WEBPACK_IMPORTED_MODULE_9__["AppTitleHoverShowDirective"]];
 var services = [_app_update_service__WEBPACK_IMPORTED_MODULE_4__["AppUpdateService"], _app_service__WEBPACK_IMPORTED_MODULE_5__["AppService"], _view_home__WEBPACK_IMPORTED_MODULE_6__["HomeService"], _components_sidebar__WEBPACK_IMPORTED_MODULE_7__["SidebarService"], _components_contentDetails__WEBPACK_IMPORTED_MODULE_8__["ContentDetailsService"]];
 var AppModule = /** @class */ (function () {
     function AppModule() {
@@ -437,7 +437,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"sidebar-body\">\r\n  <nav class=\"list-group\" *ngIf=\"isShowSideBar\">\r\n    <div class=\"nav-top\">\r\n      <title>目录</title>\r\n      <i class=\"fa fa-angle-double-left\" (click)='hideSideBar()'></i>\r\n    </div>\r\n    <ul id='catalog-details'>\r\n      <ng-template ngFor let-item [ngForOf]='catalog' let-i='index'>\r\n        <li *ngIf='!item.parentId'>\r\n          <div class='first-catalog' (click)='closeCurCatalog(item,$event.target)' *ngIf='item.isHasChild'>{{item.text}}\r\n            <i class=\"icon-isShow fa fa-angle-down\" *ngIf='item.isShow'></i>\r\n            <i class=\"icon-isShow fa fa-angle-up\" *ngIf='!item.isShow'></i>\r\n          </div>\r\n          <div class='first-catalog' (click)='closeCurCatalog(item,$event.target);pageTurn(item,$event)' [ngStyle]=\"{'background-color': item.isCurCatalog ? 'skyblue' : null}\"\r\n            *ngIf='!item.isHasChild'>{{item.text}}</div>\r\n          <ul *ngIf='item.isHasChild&&item.isShow'>\r\n            <ng-template ngFor let-cont [ngForOf]='catalog' let-j='index'>\r\n              <li *ngIf='item.id===cont.parentId'>\r\n                <div class='second-catalog' (click)='closeCurCatalog(cont,$event.target)' *ngIf='cont.isHasChild'>{{cont.text}}\r\n                    <i class=\"icon-isShow fa fa-angle-down\" *ngIf='cont.isShow'></i>\r\n                    <i class=\"icon-isShow fa fa-angle-up\" *ngIf='!cont.isShow'></i>\r\n                </div>\r\n                <div class='second-catalog' (click)='closeCurCatalog(cont,$event.target);pageTurn(cont,$event)'\r\n                  [ngStyle]=\"{'background-color': cont.isCurCatalog ? 'skyblue' : null}\" *ngIf='!cont.isHasChild'>{{cont.text}}</div>\r\n                <ul *ngIf='cont.isHasChild&&cont.isShow'>\r\n                  <ng-template ngFor let-param [ngForOf]='catalog' let-k='index'>\r\n                    <li *ngIf='cont.id===param.parentId'>\r\n                      <div class='third-catalog' (click)='pageTurn(param,$event)' [ngStyle]=\"{'background-color': param.isCurCatalog ? 'skyblue' : null}\">{{param.text}}</div>\r\n                    </li>\r\n                  </ng-template>\r\n                </ul>\r\n              </li>\r\n            </ng-template>\r\n          </ul>\r\n        </li>\r\n      </ng-template>\r\n    </ul>\r\n  </nav>\r\n</div>\r\n<div class=\"show-sideBar\" *ngIf=\"!isShowSideBar\">\r\n  <i class=\"fa fa-angle-double-right\" (click)='showSideBar()'></i>\r\n</div>\r\n"
+module.exports = "<div id=\"sidebar-body\">\r\n  <nav class=\"list-group\" *ngIf=\"isShowSideBar\">\r\n    <div class=\"nav-top\">\r\n      <title>目录</title>\r\n      <i class=\"fa fa-angle-double-left\" (click)='hideSideBar()'></i>\r\n    </div>\r\n    <ul id='catalog-details'>\r\n      <ng-template ngFor let-item [ngForOf]='catalog' let-i='index'>\r\n        <li *ngIf='!item.parentId'>\r\n          <div class='first-catalog' appTitleHoverShow (click)='closeCurCatalog(item,$event.target)' *ngIf='item.isHasChild'>{{item.text}}\r\n            <i class=\"icon-isShow fa fa-angle-down\" *ngIf='item.isShow'></i>\r\n            <i class=\"icon-isShow fa fa-angle-up\" *ngIf='!item.isShow'></i>\r\n          </div>\r\n          <div class='first-catalog' appTitleHoverShow (click)='closeCurCatalog(item,$event.target);pageTurn(item,$event)'\r\n            [ngStyle]=\"{'background-color': item.isCurCatalog ? 'skyblue' : null}\" *ngIf='!item.isHasChild'>{{item.text}}</div>\r\n          <ul *ngIf='item.isHasChild&&item.isShow'>\r\n            <ng-template ngFor let-cont [ngForOf]='catalog' let-j='index'>\r\n              <li *ngIf='item.id===cont.parentId'>\r\n                <div class='second-catalog' appTitleHoverShow (click)='closeCurCatalog(cont,$event.target)' *ngIf='cont.isHasChild'>{{cont.text}}\r\n                  <i class=\"icon-isShow fa fa-angle-down\" *ngIf='cont.isShow'></i>\r\n                  <i class=\"icon-isShow fa fa-angle-up\" *ngIf='!cont.isShow'></i>\r\n                </div>\r\n                <div class='second-catalog' appTitleHoverShow (click)='closeCurCatalog(cont,$event.target);pageTurn(cont,$event)'\r\n                  [ngStyle]=\"{'background-color': cont.isCurCatalog ? 'skyblue' : null}\" *ngIf='!cont.isHasChild'>{{cont.text}}</div>\r\n                <ul *ngIf='cont.isHasChild&&cont.isShow'>\r\n                  <ng-template ngFor let-param [ngForOf]='catalog' let-k='index'>\r\n                    <li *ngIf='cont.id===param.parentId'>\r\n                      <div class='third-catalog' appTitleHoverShow (click)='pageTurn(param,$event)' [ngStyle]=\"{'background-color': param.isCurCatalog ? 'skyblue' : null}\">{{param.text}}</div>\r\n                    </li>\r\n                  </ng-template>\r\n                </ul>\r\n              </li>\r\n            </ng-template>\r\n          </ul>\r\n        </li>\r\n      </ng-template>\r\n    </ul>\r\n  </nav>\r\n</div>\r\n<div class=\"show-sideBar\" *ngIf=\"!isShowSideBar\">\r\n  <i class=\"fa fa-angle-double-right\" (click)='showSideBar()'></i>\r\n</div>\r\n"
 
 /***/ }),
 
@@ -448,7 +448,7 @@ module.exports = "<div id=\"sidebar-body\">\r\n  <nav class=\"list-group\" *ngIf
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "#sidebar-body {\n  position: fixed;\n  z-index: 1000;\n  top: 0;\n  left: 235px;\n  width: 235px;\n  margin-left: -235px;\n  border: none;\n  border-radius: 0;\n  overflow-y: auto;\n  background-color: #222;\n  bottom: 0;\n  overflow-x: hidden;\n  padding-bottom: 80px;\n  white-space: nowrap;\n  transition: all 0.2s ease-in-out;\n  font-family: cursive; }\n  #sidebar-body .nav-top {\n    position: relative; }\n  #sidebar-body .nav-top title {\n      display: block;\n      font-size: 20px;\n      color: #fff;\n      margin: 0 auto;\n      width: 100%;\n      text-align: center;\n      padding: 10px 0;\n      height: 43px;\n      box-sizing: border-box; }\n  #sidebar-body .nav-top i {\n      cursor: pointer;\n      position: absolute;\n      color: #fff;\n      top: 0;\n      line-height: 43px;\n      margin-left: 0.5rem; }\n  #sidebar-body:after {\n    content: '<';\n    position: absolute;\n    top: 50%;\n    right: 0;\n    width: 1rem;\n    height: 1rem;\n    margin-top: -1rem; }\n  #sidebar-body ul#catalog-details {\n    color: red; }\n  #sidebar-body ul#catalog-details li {\n      color: rgba(255, 255, 255, 0.8); }\n  #sidebar-body ul#catalog-details li div {\n        cursor: pointer;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n        padding: 5px 0;\n        padding-right: 1.1rem; }\n  #sidebar-body ul#catalog-details li div .icon-isShow {\n          position: absolute;\n          right: 0.7rem; }\n  #sidebar-body ul#catalog-details li div:hover {\n          background-color: orange !important; }\n  #sidebar-body ul#catalog-details li .first-catalog {\n        text-indent: 1em;\n        font-size: 18px; }\n  #sidebar-body ul#catalog-details li .second-catalog {\n        text-indent: 2em;\n        font-size: 16px; }\n  #sidebar-body ul#catalog-details li .third-catalog {\n        text-indent: 3em;\n        font-size: 16px; }\n  .show-sideBar {\n  position: absolute;\n  top: 0;\n  font-size: 34px;\n  height: 40px;\n  left: 0.7rem;\n  color: green;\n  -webkit-animation-name: halo;\n          animation-name: halo;\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n  -webkit-animation-delay: 0s;\n          animation-delay: 0s;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite;\n  -webkit-animation-direction: alternate;\n          animation-direction: alternate;\n  -webkit-animation-play-state: running;\n          animation-play-state: running;\n  cursor: pointer; }\n  @-webkit-keyframes halo {\n  from {\n    opacity: 0.2; }\n  to {\n    opacity: 1; } }\n  @keyframes halo {\n  from {\n    opacity: 0.2; }\n  to {\n    opacity: 1; } }\n  @media screen and (max-width: 1024px) {\n  #sidebar-body {\n    left: 0; } }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlYmFyL0Q6XFxsZW5vdm8td29ya3NwYWNlXFxkZW1vXFxrbm93bGVkZ2VCbG9ncy9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2lkZWJhclxcc2lkZWJhci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGdCQUFlO0VBQ2YsY0FBYTtFQUNiLE9BQU07RUFDTixZQUFXO0VBQ1gsYUFBWTtFQUNaLG9CQUFtQjtFQUVuQixhQUFZO0VBQ1osaUJBQWdCO0VBQ2hCLGlCQUFnQjtFQUNoQix1QkFBc0I7RUFDdEIsVUFBUztFQUNULG1CQUFrQjtFQUNsQixxQkFBb0I7RUFDcEIsb0JBQW1CO0VBQ25CLGlDQUFnQztFQUNoQyxxQkFBb0IsRUFpRnJCO0VBbEdEO0lBb0JJLG1CQUFrQixFQXNCbkI7RUExQ0g7TUF1Qk0sZUFBYztNQUNkLGdCQUFlO01BQ2YsWUFBVztNQUNYLGVBQWM7TUFDZCxZQUFXO01BQ1gsbUJBQWtCO01BQ2xCLGdCQUFlO01BQ2YsYUFBWTtNQUNaLHVCQUFzQixFQUN2QjtFQWhDTDtNQW1DTSxnQkFBZTtNQUNmLG1CQUFrQjtNQUNsQixZQUFXO01BQ1gsT0FBTTtNQUNOLGtCQUFpQjtNQUNqQixvQkFBbUIsRUFDcEI7RUF6Q0w7SUE2Q0ksYUFBWTtJQUNaLG1CQUFrQjtJQUNsQixTQUFRO0lBQ1IsU0FBUTtJQUNSLFlBQWdCO0lBQ2hCLGFBQWlCO0lBQ2pCLGtCQUFzQixFQUN2QjtFQXBESDtJQXVESSxXQUFVLEVBMENYO0VBakdIO01BMkRNLGdDQUErQixFQXFDaEM7RUFoR0w7UUE4RFEsZ0JBQWU7UUFDZixpQkFBZ0I7UUFDaEIsd0JBQXVCO1FBQ3ZCLG9CQUFtQjtRQUNuQixlQUFjO1FBQ2Qsc0JBQXFCLEVBVXRCO0VBN0VQO1VBc0VVLG1CQUFrQjtVQUNsQixjQUFhLEVBQ2Q7RUF4RVQ7VUEyRVUsb0NBQW1DLEVBQ3BDO0VBNUVUO1FBaUZRLGlCQUFnQjtRQUNoQixnQkFBZSxFQUNoQjtFQW5GUDtRQXVGUSxpQkFBZ0I7UUFDaEIsZ0JBQWUsRUFDaEI7RUF6RlA7UUE2RlEsaUJBQWdCO1FBQ2hCLGdCQUFlLEVBQ2hCO0VBS1A7RUFDRSxtQkFBa0I7RUFDbEIsT0FBTTtFQUNOLGdCQUFlO0VBQ2YsYUFBWTtFQUNaLGFBQVk7RUFDWixhQUFZO0VBQ1osNkJBQW9CO1VBQXBCLHFCQUFvQjtFQUNwQiwrQkFBc0I7VUFBdEIsdUJBQXNCO0VBQ3RCLDBDQUFpQztVQUFqQyxrQ0FBaUM7RUFDakMsNEJBQW1CO1VBQW5CLG9CQUFtQjtFQUNuQiw0Q0FBbUM7VUFBbkMsb0NBQW1DO0VBQ25DLHVDQUE4QjtVQUE5QiwrQkFBOEI7RUFDOUIsc0NBQTZCO1VBQTdCLDhCQUE2QjtFQUM3QixnQkFBZSxFQUNoQjtFQUVEO0VBQ0U7SUFDRSxhQUFZLEVBQUE7RUFHZDtJQUNFLFdBQVUsRUFBQSxFQUFBO0VBTmQ7RUFDRTtJQUNFLGFBQVksRUFBQTtFQUdkO0lBQ0UsV0FBVSxFQUFBLEVBQUE7RUFLZDtFQUNFO0lBQ0UsUUFBTyxFQUNSLEVBQUEiLCJmaWxlIjoic3JjL2FwcC9jb21wb25lbnRzL3NpZGViYXIvc2lkZWJhci5jb21wb25lbnQuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIiNzaWRlYmFyLWJvZHkge1xyXG4gIHBvc2l0aW9uOiBmaXhlZDtcclxuICB6LWluZGV4OiAxMDAwO1xyXG4gIHRvcDogMDtcclxuICBsZWZ0OiAyMzVweDtcclxuICB3aWR0aDogMjM1cHg7XHJcbiAgbWFyZ2luLWxlZnQ6IC0yMzVweDtcclxuICAvLyAgIG1hcmdpbi1ib3R0b206IDQ4cHg7XHJcbiAgYm9yZGVyOiBub25lO1xyXG4gIGJvcmRlci1yYWRpdXM6IDA7XHJcbiAgb3ZlcmZsb3cteTogYXV0bztcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjIyO1xyXG4gIGJvdHRvbTogMDtcclxuICBvdmVyZmxvdy14OiBoaWRkZW47XHJcbiAgcGFkZGluZy1ib3R0b206IDgwcHg7XHJcbiAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcclxuICB0cmFuc2l0aW9uOiBhbGwgMC4ycyBlYXNlLWluLW91dDtcclxuICBmb250LWZhbWlseTogY3Vyc2l2ZTtcclxuXHJcbiAgLm5hdi10b3Age1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG5cclxuICAgIHRpdGxlIHtcclxuICAgICAgZGlzcGxheTogYmxvY2s7XHJcbiAgICAgIGZvbnQtc2l6ZTogMjBweDtcclxuICAgICAgY29sb3I6ICNmZmY7XHJcbiAgICAgIG1hcmdpbjogMCBhdXRvO1xyXG4gICAgICB3aWR0aDogMTAwJTtcclxuICAgICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgICBwYWRkaW5nOiAxMHB4IDA7XHJcbiAgICAgIGhlaWdodDogNDNweDtcclxuICAgICAgYm94LXNpemluZzogYm9yZGVyLWJveDtcclxuICAgIH1cclxuXHJcbiAgICBpIHtcclxuICAgICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgICB0b3A6IDA7XHJcbiAgICAgIGxpbmUtaGVpZ2h0OiA0M3B4O1xyXG4gICAgICBtYXJnaW4tbGVmdDogMC41cmVtO1xyXG4gICAgfVxyXG4gIH1cclxuXHJcbiAgJjphZnRlciB7XHJcbiAgICBjb250ZW50OiAnPCc7XHJcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICB0b3A6IDUwJTtcclxuICAgIHJpZ2h0OiAwO1xyXG4gICAgd2lkdGg6IDIwLzIwK3JlbTtcclxuICAgIGhlaWdodDogMjAvMjArcmVtO1xyXG4gICAgbWFyZ2luLXRvcDogLTIwLzIwK3JlbTtcclxuICB9XHJcblxyXG4gIHVsI2NhdGFsb2ctZGV0YWlscyB7XHJcbiAgICBjb2xvcjogcmVkO1xyXG4gICAgLy8gYmFja2dyb3VuZC1jb2xvcjogcmdiYSgyNTUsIDAsIDAsIDAuNSk7XHJcblxyXG4gICAgbGkge1xyXG4gICAgICBjb2xvcjogcmdiYSgyNTUsIDI1NSwgMjU1LCAwLjgpO1xyXG5cclxuICAgICAgZGl2IHtcclxuICAgICAgICBjdXJzb3I6IHBvaW50ZXI7XHJcbiAgICAgICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICAgICAgICB0ZXh0LW92ZXJmbG93OiBlbGxpcHNpcztcclxuICAgICAgICB3aGl0ZS1zcGFjZTogbm93cmFwO1xyXG4gICAgICAgIHBhZGRpbmc6IDVweCAwO1xyXG4gICAgICAgIHBhZGRpbmctcmlnaHQ6IDEuMXJlbTtcclxuXHJcbiAgICAgICAgLmljb24taXNTaG93IHtcclxuICAgICAgICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgICAgICAgIHJpZ2h0OiAwLjdyZW07XHJcbiAgICAgICAgfVxyXG5cclxuICAgICAgICAmOmhvdmVyIHtcclxuICAgICAgICAgIGJhY2tncm91bmQtY29sb3I6IG9yYW5nZSAhaW1wb3J0YW50O1xyXG4gICAgICAgIH1cclxuICAgICAgfVxyXG5cclxuXHJcbiAgICAgIC5maXJzdC1jYXRhbG9nIHtcclxuICAgICAgICB0ZXh0LWluZGVudDogMWVtO1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMThweDtcclxuICAgICAgfVxyXG5cclxuICAgICAgLnNlY29uZC1jYXRhbG9nIHtcclxuICAgICAgICAvLyBiYWNrZ3JvdW5kLWNvbG9yOiBza3libHVlO1xyXG4gICAgICAgIHRleHQtaW5kZW50OiAyZW07XHJcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICB9XHJcblxyXG4gICAgICAudGhpcmQtY2F0YWxvZyB7XHJcbiAgICAgICAgLy8gYmFja2dyb3VuZC1jb2xvcjogc2llbm5hO1xyXG4gICAgICAgIHRleHQtaW5kZW50OiAzZW07XHJcbiAgICAgICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgICB9XHJcbiAgICB9XHJcbiAgfVxyXG59XHJcblxyXG4uc2hvdy1zaWRlQmFyIHtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgdG9wOiAwO1xyXG4gIGZvbnQtc2l6ZTogMzRweDtcclxuICBoZWlnaHQ6IDQwcHg7XHJcbiAgbGVmdDogMC43cmVtO1xyXG4gIGNvbG9yOiBncmVlbjtcclxuICBhbmltYXRpb24tbmFtZTogaGFsbztcclxuICBhbmltYXRpb24tZHVyYXRpb246IDFzO1xyXG4gIGFuaW1hdGlvbi10aW1pbmctZnVuY3Rpb246IGxpbmVhcjtcclxuICBhbmltYXRpb24tZGVsYXk6IDBzO1xyXG4gIGFuaW1hdGlvbi1pdGVyYXRpb24tY291bnQ6IGluZmluaXRlO1xyXG4gIGFuaW1hdGlvbi1kaXJlY3Rpb246IGFsdGVybmF0ZTtcclxuICBhbmltYXRpb24tcGxheS1zdGF0ZTogcnVubmluZztcclxuICBjdXJzb3I6IHBvaW50ZXI7XHJcbn1cclxuXHJcbkBrZXlmcmFtZXMgaGFsbyB7XHJcbiAgZnJvbSB7XHJcbiAgICBvcGFjaXR5OiAwLjI7XHJcbiAgfVxyXG5cclxuICB0byB7XHJcbiAgICBvcGFjaXR5OiAxO1xyXG4gIH1cclxufVxyXG5cclxuXHJcbkBtZWRpYSBzY3JlZW4gYW5kIChtYXgtd2lkdGg6IDEwMjRweCkge1xyXG4gICNzaWRlYmFyLWJvZHkge1xyXG4gICAgbGVmdDogMDtcclxuICB9XHJcbn1cclxuIl19 */"
+module.exports = "#sidebar-body {\n  position: fixed;\n  z-index: 1000;\n  top: 0;\n  left: 235px;\n  width: 235px;\n  margin-left: -235px;\n  border: none;\n  border-radius: 0;\n  overflow-y: auto;\n  background-color: #222;\n  bottom: 0;\n  overflow-x: hidden;\n  padding-bottom: 80px;\n  white-space: nowrap;\n  transition: all 0.2s ease-in-out;\n  font-family: cursive;\n  -webkit-user-select: none;\n     -moz-user-select: none;\n      -ms-user-select: none;\n          user-select: none; }\n  #sidebar-body .nav-top {\n    position: relative; }\n  #sidebar-body .nav-top title {\n      display: block;\n      font-size: 20px;\n      color: #fff;\n      margin: 0 auto;\n      width: 100%;\n      text-align: center;\n      padding: 10px 0;\n      height: 43px;\n      box-sizing: border-box; }\n  #sidebar-body .nav-top i {\n      cursor: pointer;\n      position: absolute;\n      color: #fff;\n      top: 0;\n      line-height: 43px;\n      margin-left: 0.5rem; }\n  #sidebar-body:after {\n    content: '<';\n    position: absolute;\n    top: 50%;\n    right: 0;\n    width: 1rem;\n    height: 1rem;\n    margin-top: -1rem; }\n  #sidebar-body ul#catalog-details {\n    color: red; }\n  #sidebar-body ul#catalog-details li {\n      color: rgba(255, 255, 255, 0.8); }\n  #sidebar-body ul#catalog-details li div {\n        cursor: pointer;\n        overflow: hidden;\n        text-overflow: ellipsis;\n        white-space: nowrap;\n        padding: 5px 0;\n        padding-right: 1.1rem; }\n  #sidebar-body ul#catalog-details li div .icon-isShow {\n          position: absolute;\n          right: 0.7rem; }\n  #sidebar-body ul#catalog-details li div:hover {\n          background-color: orange !important; }\n  #sidebar-body ul#catalog-details li .first-catalog {\n        text-indent: 1em;\n        font-size: 18px; }\n  #sidebar-body ul#catalog-details li .second-catalog {\n        text-indent: 2em;\n        font-size: 16px; }\n  #sidebar-body ul#catalog-details li .third-catalog {\n        text-indent: 3em;\n        font-size: 16px; }\n  .show-sideBar {\n  position: absolute;\n  top: 0;\n  font-size: 34px;\n  height: 40px;\n  left: 0.7rem;\n  color: green;\n  -webkit-animation-name: halo;\n          animation-name: halo;\n  -webkit-animation-duration: 1s;\n          animation-duration: 1s;\n  -webkit-animation-timing-function: linear;\n          animation-timing-function: linear;\n  -webkit-animation-delay: 0s;\n          animation-delay: 0s;\n  -webkit-animation-iteration-count: infinite;\n          animation-iteration-count: infinite;\n  -webkit-animation-direction: alternate;\n          animation-direction: alternate;\n  -webkit-animation-play-state: running;\n          animation-play-state: running;\n  cursor: pointer; }\n  @-webkit-keyframes halo {\n  from {\n    opacity: 0.2; }\n  to {\n    opacity: 1; } }\n  @keyframes halo {\n  from {\n    opacity: 0.2; }\n  to {\n    opacity: 1; } }\n  @media screen and (max-width: 1024px) {\n  #sidebar-body {\n    left: 0; } }\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvY29tcG9uZW50cy9zaWRlYmFyL0Q6XFxsZW5vdm8td29ya3NwYWNlXFxkZW1vXFxrbm93bGVkZ2VCbG9ncy9zcmNcXGFwcFxcY29tcG9uZW50c1xcc2lkZWJhclxcc2lkZWJhci5jb21wb25lbnQuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNFLGdCQUFlO0VBQ2YsY0FBYTtFQUNiLE9BQU07RUFDTixZQUFXO0VBQ1gsYUFBWTtFQUNaLG9CQUFtQjtFQUVuQixhQUFZO0VBQ1osaUJBQWdCO0VBQ2hCLGlCQUFnQjtFQUNoQix1QkFBc0I7RUFDdEIsVUFBUztFQUNULG1CQUFrQjtFQUNsQixxQkFBb0I7RUFDcEIsb0JBQW1CO0VBQ25CLGlDQUFnQztFQUNoQyxxQkFBb0I7RUFDcEIsMEJBQWlCO0tBQWpCLHVCQUFpQjtNQUFqQixzQkFBaUI7VUFBakIsa0JBQWlCLEVBaUZsQjtFQW5HRDtJQXFCSSxtQkFBa0IsRUFzQm5CO0VBM0NIO01Bd0JNLGVBQWM7TUFDZCxnQkFBZTtNQUNmLFlBQVc7TUFDWCxlQUFjO01BQ2QsWUFBVztNQUNYLG1CQUFrQjtNQUNsQixnQkFBZTtNQUNmLGFBQVk7TUFDWix1QkFBc0IsRUFDdkI7RUFqQ0w7TUFvQ00sZ0JBQWU7TUFDZixtQkFBa0I7TUFDbEIsWUFBVztNQUNYLE9BQU07TUFDTixrQkFBaUI7TUFDakIsb0JBQW1CLEVBQ3BCO0VBMUNMO0lBOENJLGFBQVk7SUFDWixtQkFBa0I7SUFDbEIsU0FBUTtJQUNSLFNBQVE7SUFDUixZQUFnQjtJQUNoQixhQUFpQjtJQUNqQixrQkFBc0IsRUFDdkI7RUFyREg7SUF3REksV0FBVSxFQTBDWDtFQWxHSDtNQTRETSxnQ0FBK0IsRUFxQ2hDO0VBakdMO1FBK0RRLGdCQUFlO1FBQ2YsaUJBQWdCO1FBQ2hCLHdCQUF1QjtRQUN2QixvQkFBbUI7UUFDbkIsZUFBYztRQUNkLHNCQUFxQixFQVV0QjtFQTlFUDtVQXVFVSxtQkFBa0I7VUFDbEIsY0FBYSxFQUNkO0VBekVUO1VBNEVVLG9DQUFtQyxFQUNwQztFQTdFVDtRQWtGUSxpQkFBZ0I7UUFDaEIsZ0JBQWUsRUFDaEI7RUFwRlA7UUF3RlEsaUJBQWdCO1FBQ2hCLGdCQUFlLEVBQ2hCO0VBMUZQO1FBOEZRLGlCQUFnQjtRQUNoQixnQkFBZSxFQUNoQjtFQUtQO0VBQ0UsbUJBQWtCO0VBQ2xCLE9BQU07RUFDTixnQkFBZTtFQUNmLGFBQVk7RUFDWixhQUFZO0VBQ1osYUFBWTtFQUNaLDZCQUFvQjtVQUFwQixxQkFBb0I7RUFDcEIsK0JBQXNCO1VBQXRCLHVCQUFzQjtFQUN0QiwwQ0FBaUM7VUFBakMsa0NBQWlDO0VBQ2pDLDRCQUFtQjtVQUFuQixvQkFBbUI7RUFDbkIsNENBQW1DO1VBQW5DLG9DQUFtQztFQUNuQyx1Q0FBOEI7VUFBOUIsK0JBQThCO0VBQzlCLHNDQUE2QjtVQUE3Qiw4QkFBNkI7RUFDN0IsZ0JBQWUsRUFDaEI7RUFFRDtFQUNFO0lBQ0UsYUFBWSxFQUFBO0VBR2Q7SUFDRSxXQUFVLEVBQUEsRUFBQTtFQU5kO0VBQ0U7SUFDRSxhQUFZLEVBQUE7RUFHZDtJQUNFLFdBQVUsRUFBQSxFQUFBO0VBS2Q7RUFDRTtJQUNFLFFBQU8sRUFDUixFQUFBIiwiZmlsZSI6InNyYy9hcHAvY29tcG9uZW50cy9zaWRlYmFyL3NpZGViYXIuY29tcG9uZW50LnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIjc2lkZWJhci1ib2R5IHtcclxuICBwb3NpdGlvbjogZml4ZWQ7XHJcbiAgei1pbmRleDogMTAwMDtcclxuICB0b3A6IDA7XHJcbiAgbGVmdDogMjM1cHg7XHJcbiAgd2lkdGg6IDIzNXB4O1xyXG4gIG1hcmdpbi1sZWZ0OiAtMjM1cHg7XHJcbiAgLy8gICBtYXJnaW4tYm90dG9tOiA0OHB4O1xyXG4gIGJvcmRlcjogbm9uZTtcclxuICBib3JkZXItcmFkaXVzOiAwO1xyXG4gIG92ZXJmbG93LXk6IGF1dG87XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzIyMjtcclxuICBib3R0b206IDA7XHJcbiAgb3ZlcmZsb3cteDogaGlkZGVuO1xyXG4gIHBhZGRpbmctYm90dG9tOiA4MHB4O1xyXG4gIHdoaXRlLXNwYWNlOiBub3dyYXA7XHJcbiAgdHJhbnNpdGlvbjogYWxsIDAuMnMgZWFzZS1pbi1vdXQ7XHJcbiAgZm9udC1mYW1pbHk6IGN1cnNpdmU7XHJcbiAgdXNlci1zZWxlY3Q6IG5vbmU7XHJcblxyXG4gIC5uYXYtdG9wIHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuXHJcbiAgICB0aXRsZSB7XHJcbiAgICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgICBmb250LXNpemU6IDIwcHg7XHJcbiAgICAgIGNvbG9yOiAjZmZmO1xyXG4gICAgICBtYXJnaW46IDAgYXV0bztcclxuICAgICAgd2lkdGg6IDEwMCU7XHJcbiAgICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgICAgcGFkZGluZzogMTBweCAwO1xyXG4gICAgICBoZWlnaHQ6IDQzcHg7XHJcbiAgICAgIGJveC1zaXppbmc6IGJvcmRlci1ib3g7XHJcbiAgICB9XHJcblxyXG4gICAgaSB7XHJcbiAgICAgIGN1cnNvcjogcG9pbnRlcjtcclxuICAgICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgICBjb2xvcjogI2ZmZjtcclxuICAgICAgdG9wOiAwO1xyXG4gICAgICBsaW5lLWhlaWdodDogNDNweDtcclxuICAgICAgbWFyZ2luLWxlZnQ6IDAuNXJlbTtcclxuICAgIH1cclxuICB9XHJcblxyXG4gICY6YWZ0ZXIge1xyXG4gICAgY29udGVudDogJzwnO1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiA1MCU7XHJcbiAgICByaWdodDogMDtcclxuICAgIHdpZHRoOiAyMC8yMCtyZW07XHJcbiAgICBoZWlnaHQ6IDIwLzIwK3JlbTtcclxuICAgIG1hcmdpbi10b3A6IC0yMC8yMCtyZW07XHJcbiAgfVxyXG5cclxuICB1bCNjYXRhbG9nLWRldGFpbHMge1xyXG4gICAgY29sb3I6IHJlZDtcclxuICAgIC8vIGJhY2tncm91bmQtY29sb3I6IHJnYmEoMjU1LCAwLCAwLCAwLjUpO1xyXG5cclxuICAgIGxpIHtcclxuICAgICAgY29sb3I6IHJnYmEoMjU1LCAyNTUsIDI1NSwgMC44KTtcclxuXHJcbiAgICAgIGRpdiB7XHJcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xyXG4gICAgICAgIG92ZXJmbG93OiBoaWRkZW47XHJcbiAgICAgICAgdGV4dC1vdmVyZmxvdzogZWxsaXBzaXM7XHJcbiAgICAgICAgd2hpdGUtc3BhY2U6IG5vd3JhcDtcclxuICAgICAgICBwYWRkaW5nOiA1cHggMDtcclxuICAgICAgICBwYWRkaW5nLXJpZ2h0OiAxLjFyZW07XHJcblxyXG4gICAgICAgIC5pY29uLWlzU2hvdyB7XHJcbiAgICAgICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgICAgICAgICByaWdodDogMC43cmVtO1xyXG4gICAgICAgIH1cclxuXHJcbiAgICAgICAgJjpob3ZlciB7XHJcbiAgICAgICAgICBiYWNrZ3JvdW5kLWNvbG9yOiBvcmFuZ2UgIWltcG9ydGFudDtcclxuICAgICAgICB9XHJcbiAgICAgIH1cclxuXHJcblxyXG4gICAgICAuZmlyc3QtY2F0YWxvZyB7XHJcbiAgICAgICAgdGV4dC1pbmRlbnQ6IDFlbTtcclxuICAgICAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICAgIH1cclxuXHJcbiAgICAgIC5zZWNvbmQtY2F0YWxvZyB7XHJcbiAgICAgICAgLy8gYmFja2dyb3VuZC1jb2xvcjogc2t5Ymx1ZTtcclxuICAgICAgICB0ZXh0LWluZGVudDogMmVtO1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgICAgfVxyXG5cclxuICAgICAgLnRoaXJkLWNhdGFsb2cge1xyXG4gICAgICAgIC8vIGJhY2tncm91bmQtY29sb3I6IHNpZW5uYTtcclxuICAgICAgICB0ZXh0LWluZGVudDogM2VtO1xyXG4gICAgICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgICAgfVxyXG4gICAgfVxyXG4gIH1cclxufVxyXG5cclxuLnNob3ctc2lkZUJhciB7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIHRvcDogMDtcclxuICBmb250LXNpemU6IDM0cHg7XHJcbiAgaGVpZ2h0OiA0MHB4O1xyXG4gIGxlZnQ6IDAuN3JlbTtcclxuICBjb2xvcjogZ3JlZW47XHJcbiAgYW5pbWF0aW9uLW5hbWU6IGhhbG87XHJcbiAgYW5pbWF0aW9uLWR1cmF0aW9uOiAxcztcclxuICBhbmltYXRpb24tdGltaW5nLWZ1bmN0aW9uOiBsaW5lYXI7XHJcbiAgYW5pbWF0aW9uLWRlbGF5OiAwcztcclxuICBhbmltYXRpb24taXRlcmF0aW9uLWNvdW50OiBpbmZpbml0ZTtcclxuICBhbmltYXRpb24tZGlyZWN0aW9uOiBhbHRlcm5hdGU7XHJcbiAgYW5pbWF0aW9uLXBsYXktc3RhdGU6IHJ1bm5pbmc7XHJcbiAgY3Vyc29yOiBwb2ludGVyO1xyXG59XHJcblxyXG5Aa2V5ZnJhbWVzIGhhbG8ge1xyXG4gIGZyb20ge1xyXG4gICAgb3BhY2l0eTogMC4yO1xyXG4gIH1cclxuXHJcbiAgdG8ge1xyXG4gICAgb3BhY2l0eTogMTtcclxuICB9XHJcbn1cclxuXHJcblxyXG5AbWVkaWEgc2NyZWVuIGFuZCAobWF4LXdpZHRoOiAxMDI0cHgpIHtcclxuICAjc2lkZWJhci1ib2R5IHtcclxuICAgIGxlZnQ6IDA7XHJcbiAgfVxyXG59XHJcbiJdfQ== */"
 
 /***/ }),
 
@@ -484,7 +484,7 @@ var SideBarComponent = /** @class */ (function () {
         this.appUpdateService = appUpdateService;
         this.catalog = [
             {
-                id: 1,
+                id: '1',
                 text: '学习网址或demo网站学习网址或demo网站',
                 isHasChild: true,
                 curCatalogLevel: 'first',
@@ -494,9 +494,9 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: []
             },
             {
-                id: 2,
+                id: '1-1',
                 text: '学习网址或demo网站学习网址或demo网站',
-                parentId: 1,
+                parentId: '1',
                 isHasChild: true,
                 curCatalogLevel: 'second',
                 isShow: true,
@@ -505,9 +505,9 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [],
             },
             {
-                id: 3,
+                id: '1-1-1',
                 text: '网站',
-                parentId: 2,
+                parentId: '1-1',
                 isHasChild: false,
                 curCatalogLevel: 'third',
                 isShow: false,
@@ -522,7 +522,7 @@ var SideBarComponent = /** @class */ (function () {
                 ],
             },
             {
-                id: 4,
+                id: '2',
                 text: 'other',
                 parentId: '',
                 isHasChild: false,
@@ -539,7 +539,7 @@ var SideBarComponent = /** @class */ (function () {
                 ],
             },
             {
-                id: 5,
+                id: '3',
                 text: 'css----样式',
                 isHasChild: true,
                 curCatalogLevel: 'first',
@@ -549,9 +549,9 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [],
             },
             {
-                id: 6,
+                id: '3-1',
                 text: 'css3----常用总结',
-                parentId: 5,
+                parentId: '3',
                 isHasChild: false,
                 curCatalogLevel: 'second',
                 isShow: false,
@@ -566,18 +566,108 @@ var SideBarComponent = /** @class */ (function () {
                 ],
             },
             {
-                id: 6,
-                text: 'table---radio和audio样式',
-                parentId: 5,
+                id: '3-2',
+                text: 'table---边框样式',
+                parentId: '3',
                 isHasChild: false,
                 curCatalogLevel: 'second',
                 isShow: false,
-                title: 'table---radio和audio样式',
+                title: 'table---边框样式',
                 isCurCatalog: false,
                 pageOption: [
                     {
                         type: 'md',
                         mdSrc: './assets/markdown/css---Style/table.md',
+                        mdStyle: {}
+                    }
+                ],
+            },
+            {
+                id: '3-3',
+                text: 'angular4---动画闪烁指令',
+                parentId: '3',
+                isHasChild: false,
+                curCatalogLevel: 'second',
+                isShow: false,
+                title: 'angular4---haloDirective',
+                isCurCatalog: false,
+                pageOption: [
+                    {
+                        type: 'md',
+                        mdSrc: './assets/markdown/css---Style/angular4---haloDirective.md',
+                        mdStyle: {}
+                    }
+                ],
+            },
+            {
+                id: '3-4',
+                text: 'radio和checkbox修改选择框样式',
+                parentId: '3',
+                isHasChild: false,
+                curCatalogLevel: 'second',
+                isShow: false,
+                title: 'radio和checkbox修改选择框样式',
+                isCurCatalog: false,
+                pageOption: [
+                    {
+                        type: 'md',
+                        mdSrc: './assets/markdown/css---Style/change--radioAndCheckboxStyle.md',
+                        mdStyle: {}
+                    }
+                ],
+            },
+            {
+                id: '4',
+                text: '终端常用命令',
+                parentId: '',
+                isHasChild: true,
+                curCatalogLevel: 'first',
+                isShow: false,
+                title: '终端常用命令',
+                isCurCatalog: false,
+                pageOption: [],
+            },
+            {
+                id: '4-1',
+                text: 'terminal',
+                parentId: '4',
+                isHasChild: false,
+                curCatalogLevel: 'second',
+                isShow: false,
+                title: '终端常用命令',
+                isCurCatalog: false,
+                pageOption: [
+                    {
+                        type: 'md',
+                        mdSrc: './assets/markdown/terminal/terminal.md',
+                        mdStyle: {}
+                    }
+                ],
+            },
+            {
+                id: '5',
+                text: 'nodeJs',
+                parentId: '',
+                isHasChild: true,
+                curCatalogLevel: 'first',
+                isShow: false,
+                title: 'nodeJs',
+                isCurCatalog: false,
+                pageOption: [],
+            },
+            {
+                id: '5-1',
+                text: 'nodeJs',
+                parentId: '5',
+                isHasChild: false,
+                curCatalogLevel: 'second',
+                isShow: false,
+                title: 'nodeJs',
+                isCurCatalog: false,
+                pageOption: [
+                    {
+                        type: 'md',
+                        mdSrc: './assets/markdown/nodejs/nodejs--回调函数.md',
                         mdStyle: {}
                     }
                 ],
@@ -679,6 +769,27 @@ var SidebarService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/directives/index.ts":
+/*!*************************************!*\
+  !*** ./src/app/directives/index.ts ***!
+  \*************************************/
+/*! exports provided: AppMarkedDirective, AppTitleHoverShowDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _marked_directive__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./marked.directive */ "./src/app/directives/marked.directive.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AppMarkedDirective", function() { return _marked_directive__WEBPACK_IMPORTED_MODULE_0__["AppMarkedDirective"]; });
+
+/* harmony import */ var _titleHoverShow_directive__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./titleHoverShow.directive */ "./src/app/directives/titleHoverShow.directive.ts");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "AppTitleHoverShowDirective", function() { return _titleHoverShow_directive__WEBPACK_IMPORTED_MODULE_1__["AppTitleHoverShowDirective"]; });
+
+
+
+
+
+/***/ }),
+
 /***/ "./src/app/directives/marked.directive.ts":
 /*!************************************************!*\
   !*** ./src/app/directives/marked.directive.ts ***!
@@ -740,6 +851,75 @@ var AppMarkedDirective = /** @class */ (function () {
         __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
     ], AppMarkedDirective);
     return AppMarkedDirective;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/directives/titleHoverShow.directive.ts":
+/*!********************************************************!*\
+  !*** ./src/app/directives/titleHoverShow.directive.ts ***!
+  \********************************************************/
+/*! exports provided: AppTitleHoverShowDirective */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppTitleHoverShowDirective", function() { return AppTitleHoverShowDirective; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+var AppTitleHoverShowDirective = /** @class */ (function () {
+    function AppTitleHoverShowDirective(element) {
+        this.element = element;
+    }
+    AppTitleHoverShowDirective.prototype.ngOnInit = function () { };
+    AppTitleHoverShowDirective.prototype.titleHoverShow = function (eventTarget, event) {
+        var e = event || window.event;
+        var removeClass = document.getElementsByClassName('titleHoverShow');
+        if (Array.from(removeClass).length !== 0) {
+            Array.from(removeClass).map(function (item, index, arr) {
+                item.remove();
+            });
+        }
+        var div = document.createElement('div');
+        div.innerHTML = this.element.nativeElement.innerText;
+        div.className = 'titleHoverShow';
+        div.style.cssText = "\n            position:absolute;\n            left:" + e.clientX + "px;\n            top:" + (e.clientY - 40) + "px;\n            background-color:#d7e8fc;\n            color:#000;\n            border:1px solid #bcc8dc;\n            z-index:1000;\n            padding:5px 10px;\n            border-radius:5px;";
+        document.body.appendChild(div);
+    };
+    AppTitleHoverShowDirective.prototype.titleHoverhide = function (eventTarget) {
+        var removeClass = document.getElementsByClassName('titleHoverShow');
+        Array.from(removeClass).map(function (item, index, arr) {
+            item.remove();
+        });
+    };
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('mousemove', ['$event.target']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object, Object]),
+        __metadata("design:returntype", void 0)
+    ], AppTitleHoverShowDirective.prototype, "titleHoverShow", null);
+    __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["HostListener"])('mouseout', ['$event.target']),
+        __metadata("design:type", Function),
+        __metadata("design:paramtypes", [Object]),
+        __metadata("design:returntype", void 0)
+    ], AppTitleHoverShowDirective.prototype, "titleHoverhide", null);
+    AppTitleHoverShowDirective = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Directive"])({ selector: '[appTitleHoverShow]' }),
+        __metadata("design:paramtypes", [_angular_core__WEBPACK_IMPORTED_MODULE_0__["ElementRef"]])
+    ], AppTitleHoverShowDirective);
+    return AppTitleHoverShowDirective;
 }());
 
 
