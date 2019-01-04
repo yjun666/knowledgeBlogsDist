@@ -186,20 +186,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppModule", function() { return AppModule; });
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _app_update_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app-update.service */ "./src/app/app-update.service.ts");
-/* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app.service */ "./src/app/app.service.ts");
-/* harmony import */ var _view_home__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./view/home */ "./src/app/view/home/index.ts");
-/* harmony import */ var _components_sidebar__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/sidebar */ "./src/app/components/sidebar/index.ts");
-/* harmony import */ var _components_contentDetails__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/contentDetails */ "./src/app/components/contentDetails/index.ts");
-/* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./directives */ "./src/app/directives/index.ts");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _app_update_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./app-update.service */ "./src/app/app-update.service.ts");
+/* harmony import */ var _app_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app.service */ "./src/app/app.service.ts");
+/* harmony import */ var _view_home__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./view/home */ "./src/app/view/home/index.ts");
+/* harmony import */ var _components_sidebar__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/sidebar */ "./src/app/components/sidebar/index.ts");
+/* harmony import */ var _components_contentDetails__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./components/contentDetails */ "./src/app/components/contentDetails/index.ts");
+/* harmony import */ var _directives__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./directives */ "./src/app/directives/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -213,23 +215,24 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 // directives
 
-var components = [_view_home__WEBPACK_IMPORTED_MODULE_6__["HomeComponent"], _components_sidebar__WEBPACK_IMPORTED_MODULE_7__["SideBarComponent"], _components_contentDetails__WEBPACK_IMPORTED_MODULE_8__["ContentDetailsComponent"]];
-var directives = [_directives__WEBPACK_IMPORTED_MODULE_9__["AppMarkedDirective"], _directives__WEBPACK_IMPORTED_MODULE_9__["AppTitleHoverShowDirective"]];
-var services = [_app_update_service__WEBPACK_IMPORTED_MODULE_4__["AppUpdateService"], _app_service__WEBPACK_IMPORTED_MODULE_5__["AppService"], _view_home__WEBPACK_IMPORTED_MODULE_6__["HomeService"], _components_sidebar__WEBPACK_IMPORTED_MODULE_7__["SidebarService"], _components_contentDetails__WEBPACK_IMPORTED_MODULE_8__["ContentDetailsService"]];
+var components = [_view_home__WEBPACK_IMPORTED_MODULE_7__["HomeComponent"], _components_sidebar__WEBPACK_IMPORTED_MODULE_8__["SideBarComponent"], _components_contentDetails__WEBPACK_IMPORTED_MODULE_9__["ContentDetailsComponent"]];
+var directives = [_directives__WEBPACK_IMPORTED_MODULE_10__["AppMarkedDirective"], _directives__WEBPACK_IMPORTED_MODULE_10__["AppTitleHoverShowDirective"]];
+var services = [_app_update_service__WEBPACK_IMPORTED_MODULE_5__["AppUpdateService"], _app_service__WEBPACK_IMPORTED_MODULE_6__["AppService"], _view_home__WEBPACK_IMPORTED_MODULE_7__["HomeService"], _components_sidebar__WEBPACK_IMPORTED_MODULE_8__["SidebarService"], _components_contentDetails__WEBPACK_IMPORTED_MODULE_9__["ContentDetailsService"]];
 var AppModule = /** @class */ (function () {
     function AppModule() {
     }
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]
             ].concat(components, directives),
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_2__["AppRoutingModule"]
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_3__["AppRoutingModule"],
+                _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"]
             ],
             providers: services.slice(),
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_3__["AppComponent"]]
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_4__["AppComponent"]]
         })
     ], AppModule);
     return AppModule;
@@ -281,7 +284,7 @@ var AppService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div id=\"content-details-body\">\r\n  <div id=\"content\">\r\n    <h1>{{title}}</h1>\r\n  </div>\r\n  <ng-template ngFor let-item [ngForOf]='curOption'>\r\n    <div class=\"img-content\" *ngIf='item.type==\"img\"'>\r\n      <img [attr.src]='item.imgSrc' [ngStyle]=\"item.imgStyle\" alt=\"\">\r\n    </div>\r\n    <div class=\"md-content\" id='md' *ngIf='item.type==\"md\"' [appMarked]='item'>\r\n\r\n    </div>\r\n  </ng-template>\r\n</div>\r\n"
+module.exports = "<div id=\"content-details-body\">\r\n  <div id=\"content\">\r\n    <h1>{{title}}</h1>\r\n  </div>\r\n  <ng-template ngFor let-item [ngForOf]='curOption'>\r\n    <div class=\"img-content\" *ngIf='item.type==\"img\"'>\r\n      <img [attr.src]='item.imgSrc' [ngStyle]=\"item.imgStyle\" alt=\"\">\r\n    </div>\r\n    <div class=\"md-content\" id='md' *ngIf='item.type==\"md\"' [appMarked]='item'></div>\r\n  </ng-template>\r\n  <img src=\"./assets/knowledge_img/team中國自.png\" alt=\"\">\r\n</div>\r\n"
 
 /***/ }),
 
@@ -464,8 +467,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SideBarComponent", function() { return SideBarComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_update_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../app-update.service */ "./src/app/app-update.service.ts");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
-/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -479,13 +483,16 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 
+
 var SideBarComponent = /** @class */ (function () {
-    function SideBarComponent(appUpdateService) {
+    function SideBarComponent(appUpdateService, http) {
         this.appUpdateService = appUpdateService;
+        this.http = http;
         this.catalog = [
             {
                 id: '1',
                 text: '学习网址或demo网站学习网址或demo网站',
+                parentId: '',
                 isHasChild: true,
                 curCatalogLevel: 'first',
                 isShow: true,
@@ -541,6 +548,7 @@ var SideBarComponent = /** @class */ (function () {
             {
                 id: '3',
                 text: 'css----样式',
+                parentId: '',
                 isHasChild: true,
                 curCatalogLevel: 'first',
                 isShow: false,
@@ -657,17 +665,51 @@ var SideBarComponent = /** @class */ (function () {
             },
             {
                 id: '5-1',
-                text: 'nodeJs',
+                text: 'nodeJs--回调函数',
                 parentId: '5',
                 isHasChild: false,
                 curCatalogLevel: 'second',
                 isShow: false,
-                title: 'nodeJs',
+                title: 'nodeJs--回调函数',
                 isCurCatalog: false,
                 pageOption: [
                     {
                         type: 'md',
-                        mdSrc: './assets/markdown/nodejs/nodejs--回调函数.md',
+                        mdSrc: './assets/markdown/nodejs/nodejs--callbackFun.md',
+                        mdStyle: {}
+                    }
+                ],
+            },
+            {
+                id: '5-2',
+                text: 'nodejs—eventEmitter',
+                parentId: '5',
+                isHasChild: false,
+                curCatalogLevel: 'second',
+                isShow: false,
+                title: 'nodejs—eventEmitter',
+                isCurCatalog: false,
+                pageOption: [
+                    {
+                        type: 'md',
+                        mdSrc: './assets/markdown/nodejs/nodejs—eventEmitter.md',
+                        mdStyle: {}
+                    }
+                ],
+            },
+            {
+                id: '5-3',
+                text: 'nodejs—eventEmitter',
+                parentId: '5',
+                isHasChild: false,
+                curCatalogLevel: 'second',
+                isShow: false,
+                title: 'nodejs—eventEmitter',
+                isCurCatalog: false,
+                pageOption: [
+                    {
+                        type: 'md',
+                        mdSrc: './assets/markdown/nodejs/nodejs-getOrPost.md',
                         mdStyle: {}
                     }
                 ],
@@ -676,6 +718,12 @@ var SideBarComponent = /** @class */ (function () {
         this.isShowSideBar = true;
     }
     SideBarComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.http.get('./assets/json/text2.json')
+            .subscribe(function (res) {
+            console.log(res);
+            _this.catalog = res;
+        });
     };
     SideBarComponent.prototype.ngAfterViewInit = function () { };
     SideBarComponent.prototype.closeCurCatalog = function (param, event) {
@@ -684,22 +732,24 @@ var SideBarComponent = /** @class */ (function () {
         var curParentId = param.parentId;
         var curEleClassName = event.className;
         // console.log(curId, curParentId, curEleClassName);
-        var catalog$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["from"])(this.catalog);
-        var catalog$New = catalog$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(function (val) { return val.id === param.id; }))
+        var catalog$ = Object(rxjs__WEBPACK_IMPORTED_MODULE_3__["from"])(this.catalog);
+        var catalog$New = catalog$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["filter"])(function (val) { return val['id'] === param.id; }))
             .subscribe(function (data) {
-            data.isShow = !data.isShow; // 控制二级目录是否显示即一级目录是否打开
-            console.log(data.id);
+            data['isShow'] = !data['isShow']; // 控制二级目录是否显示即一级目录是否打开
+            console.log(data['id']);
             // 控制三级目录是否显示即二级目录是否打开
-            catalog$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["filter"])(function (val) { return val.parentId === data.id; }))
+            catalog$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["filter"])(function (val) { return val['parentId'] === data['id']; }))
                 .subscribe(function (data2) {
-                if (!data.isShow) {
-                    data2.isShow = false;
+                if (!data['isShow']) {
+                    data2['isShow'] = false;
                 }
             }).unsubscribe();
         }).unsubscribe();
     };
     SideBarComponent.prototype.pageTurn = function (param, event) {
-        this.catalog.find(function (m) { return m.isCurCatalog; }).isCurCatalog = false;
+        if (this.catalog.find(function (m) { return m.isCurCatalog; })) {
+            this.catalog.find(function (m) { return m.isCurCatalog; }).isCurCatalog = false;
+        }
         param.isCurCatalog = true;
         this.appUpdateService.emitUpdataSideBarSubject(param);
         console.log(event);
@@ -725,7 +775,7 @@ var SideBarComponent = /** @class */ (function () {
             template: __webpack_require__(/*! ./sidebar.component.html */ "./src/app/components/sidebar/sidebar.component.html"),
             styles: [__webpack_require__(/*! ./sidebar.component.scss */ "./src/app/components/sidebar/sidebar.component.scss")]
         }),
-        __metadata("design:paramtypes", [_app_update_service__WEBPACK_IMPORTED_MODULE_1__["AppUpdateService"]])
+        __metadata("design:paramtypes", [_app_update_service__WEBPACK_IMPORTED_MODULE_1__["AppUpdateService"], _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
     ], SideBarComponent);
     return SideBarComponent;
 }());
