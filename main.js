@@ -119,10 +119,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppRoutingModule", function() { return AppRoutingModule; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
-/* harmony import */ var _view_home_home_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./view/home/home.component */ "./src/app/view/home/home.component.ts");
-/* harmony import */ var _view_login_login_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./view/login/login.component */ "./src/app/view/login/login.component.ts");
-/* harmony import */ var _view_markdown_markdown_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./view/markdown/markdown.component */ "./src/app/view/markdown/markdown.component.ts");
-/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./auth */ "./src/app/auth/index.ts");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm5/common.js");
+/* harmony import */ var _view_home_home_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./view/home/home.component */ "./src/app/view/home/home.component.ts");
+/* harmony import */ var _view_login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./view/login/login.component */ "./src/app/view/login/login.component.ts");
+/* harmony import */ var _view_markdown_markdown_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./view/markdown/markdown.component */ "./src/app/view/markdown/markdown.component.ts");
+/* harmony import */ var _auth__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./auth */ "./src/app/auth/index.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -135,13 +136,14 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
 var routes = [
     // { path: 'login', component: LoginComponent },  // 不需要加  '/', 默认写法
-    { path: 'login', component: _view_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"] },
+    { path: 'login', component: _view_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
     {
         path: 'home',
-        canActivate: [_auth__WEBPACK_IMPORTED_MODULE_5__["AuthGuard"]],
-        component: _view_home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"],
+        canActivate: [_auth__WEBPACK_IMPORTED_MODULE_6__["AuthGuard"]],
+        component: _view_home_home_component__WEBPACK_IMPORTED_MODULE_3__["HomeComponent"],
         children: [
             // {
             //   path: '',
@@ -149,23 +151,23 @@ var routes = [
             // },
             {
                 path: 'markdown',
-                component: _view_markdown_markdown_component__WEBPACK_IMPORTED_MODULE_4__["MarkdownComponent"],
+                component: _view_markdown_markdown_component__WEBPACK_IMPORTED_MODULE_5__["MarkdownComponent"],
                 data: { animation: 'HomePage' }
             },
             {
                 path: 'iframe',
-                component: _view_markdown_markdown_component__WEBPACK_IMPORTED_MODULE_4__["MarkdownComponent"],
+                component: _view_markdown_markdown_component__WEBPACK_IMPORTED_MODULE_5__["MarkdownComponent"],
                 data: { animation: 'AboutPage' }
             },
             {
                 path: 'demo',
-                component: _view_markdown_markdown_component__WEBPACK_IMPORTED_MODULE_4__["MarkdownComponent"],
+                component: _view_markdown_markdown_component__WEBPACK_IMPORTED_MODULE_5__["MarkdownComponent"],
                 data: { animation: 'FilterPage' }
             },
         ]
     },
-    { path: '', redirectTo: 'login', pathMatch: 'full' },
-    { path: '**', component: _view_login_login_component__WEBPACK_IMPORTED_MODULE_3__["LoginComponent"] },
+    { path: '', redirectTo: '/login', pathMatch: 'full' },
+    { path: '**', component: _view_login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -173,7 +175,8 @@ var AppRoutingModule = /** @class */ (function () {
     AppRoutingModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["NgModule"])({
             imports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"].forRoot(routes)],
-            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]]
+            exports: [_angular_router__WEBPACK_IMPORTED_MODULE_1__["RouterModule"]],
+            providers: [{ provide: _angular_common__WEBPACK_IMPORTED_MODULE_2__["LocationStrategy"], useClass: _angular_common__WEBPACK_IMPORTED_MODULE_2__["HashLocationStrategy"] }],
         })
     ], AppRoutingModule);
     return AppRoutingModule;
