@@ -1255,7 +1255,7 @@ var SideBarComponent = /** @class */ (function () {
     }
     SideBarComponent.prototype.ngOnInit = function () {
         var _this = this;
-        this.http.get('./assets/json/text2.json')
+        this.http.get('/assets/json/text2.json')
             .subscribe(function (res) {
             console.log(res);
             _this.catalog = res;
@@ -1886,7 +1886,7 @@ var LoginService = /** @class */ (function () {
         this.isLoggedIn = false;
     }
     LoginService.prototype.login = function () {
-        return this.http.get('./assets/json/text2.json'); // 模拟请求，看subscribe是否等待请求成功才调用
+        return this.http.get('/assets/json/text2.json'); // 模拟请求，看subscribe是否等待请求成功才调用
         // // 下边使用延时模拟请求延时
         // return of(true).pipe(
         //     delay(5000),
