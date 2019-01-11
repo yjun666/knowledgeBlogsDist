@@ -848,7 +848,7 @@ var ContentDetailsComponent = /** @class */ (function () {
         this.curOption = [
             {
                 type: 'md',
-                mdSrc: './assets/markdown/js/生成随机数.md',
+                mdSrc: '/assets/markdown/js/生成随机数.md',
                 mdStyle: {}
             }
         ];
@@ -1076,7 +1076,7 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [
                     {
                         type: 'md',
-                        mdSrc: './assets/markdown/all_study_station/all-study-station.md',
+                        mdSrc: '/assets/markdown/all_study_station/all-study-station.md',
                         mdStyle: {}
                     }
                 ],
@@ -1093,7 +1093,7 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [
                     {
                         type: 'md',
-                        mdSrc: './assets/markdown/all_study_station/all-study-station.md',
+                        mdSrc: '/assets/markdown/all_study_station/all-study-station.md',
                         mdStyle: {}
                     }
                 ],
@@ -1121,7 +1121,7 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [
                     {
                         type: 'md',
-                        mdSrc: './assets/markdown/css---Style/css3.md',
+                        mdSrc: '/assets/markdown/css---Style/css3.md',
                         mdStyle: {}
                     }
                 ],
@@ -1138,7 +1138,7 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [
                     {
                         type: 'md',
-                        mdSrc: './assets/markdown/css---Style/table.md',
+                        mdSrc: '/assets/markdown/css---Style/table.md',
                         mdStyle: {}
                     }
                 ],
@@ -1155,7 +1155,7 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [
                     {
                         type: 'md',
-                        mdSrc: './assets/markdown/css---Style/change--radioAndCheckboxStyle.md',
+                        mdSrc: '/assets/markdown/css---Style/change--radioAndCheckboxStyle.md',
                         mdStyle: {}
                     }
                 ],
@@ -1183,7 +1183,7 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [
                     {
                         type: 'md',
-                        mdSrc: './assets/markdown/terminal/terminal.md',
+                        mdSrc: '/assets/markdown/terminal/terminal.md',
                         mdStyle: {}
                     }
                 ],
@@ -1211,7 +1211,7 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [
                     {
                         type: 'md',
-                        mdSrc: './assets/markdown/nodejs/nodejs--callbackFun.md',
+                        mdSrc: '/assets/markdown/nodejs/nodejs--callbackFun.md',
                         mdStyle: {}
                     }
                 ],
@@ -1228,7 +1228,7 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [
                     {
                         type: 'md',
-                        mdSrc: './assets/markdown/nodejs/nodejs—eventEmitter.md',
+                        mdSrc: '/assets/markdown/nodejs/nodejs—eventEmitter.md',
                         mdStyle: {}
                     }
                 ],
@@ -1245,7 +1245,7 @@ var SideBarComponent = /** @class */ (function () {
                 pageOption: [
                     {
                         type: 'md',
-                        mdSrc: './assets/markdown/nodejs/nodejs-getOrPost.md',
+                        mdSrc: '/assets/markdown/nodejs/nodejs-getOrPost.md',
                         mdStyle: {}
                     }
                 ],
