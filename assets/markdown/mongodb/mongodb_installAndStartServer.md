@@ -11,7 +11,6 @@
 ### 详细的数据库增删改查见git下的express-start仓库
 
 > 数据库目前为本地连接即127.0.0.1:27017
-<<<<<<< HEAD
 
 
 
@@ -41,5 +40,3 @@ Mac 运行 mongodb
 预先配置好环境变量后执行`mongod --dbpath=/usr/local/data`可启动mongodb服务
 启动好服务后可执行`http://localhost:27017/`查看是否启动服务成功
 
-=======
->>>>>>> 5354c450c2659b4e2cb0e67012e1445e08279280
