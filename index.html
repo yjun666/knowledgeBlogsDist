@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>TeamProject</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  
+
+  <script>
+    var html = document.getElementsByTagName('html')[0];
+    if (html) {
+      var w = window.innerWidth;
+      var fontSize = (w > 1440 ? 1440 : w) / 1440 * 20;
+      html.style.fontSize = fontSize + 'px';
+      /*已经适配来当前的设备*/
+    }
+    /*响应*/
+    window.onload = function () {
+      window.onresize = function () {
+        var w = window.innerWidth;
+        var fontSize = (w > 1440 ? 1440 : w) / 1440 * 20;
+        html.style.fontSize = fontSize + 'px';
+      }
+    }
+
+  </script>
+
+<link rel="stylesheet" href="styles.0f477eebca9aa160cd00.css"></head>
+
+<body>
+  <app-root></app-root>
+<script src="runtime-es2015.4f8646c8f814008952b1.js" type="module"></script><script src="polyfills-es2015.046cf567f6a85ec46f15.js" type="module"></script><script src="runtime-es5.e5936f455c674d98a40a.js" nomodule></script><script src="polyfills-es5.c1931fbf4db9d2d06de3.js" nomodule></script><script src="main-es2015.25060e8368a638220599.js" type="module"></script><script src="main-es5.bc0b0a0605a9b0c6b6ff.js" nomodule></script></body>
+
+</html>
